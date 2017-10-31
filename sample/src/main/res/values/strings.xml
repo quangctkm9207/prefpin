@@ -1,0 +1,18 @@
+<resources>
+  <string name="app_name">PrefPin Sample</string>
+
+  <string name="pref_about_key" translatable="false">pref_about</string>
+  <string name="pref_about_title">About</string>
+
+  <string name="pref_edit_key" translatable="false">pref_edit</string>
+  <string name="pref_edit_title">EditPreference</string>
+  <string name="pref_edit_default">edit text</string>
+
+  <string name="pref_checkbox_key" translatable="false">pref_checkbox</string>
+  <string name="pref_checkbox_title">CheckboxPreference</string>
+  <string name="pref_checkbox_default">check box</string>
+
+  <string name="pref_switch_key" translatable="false">pref_switch</string>
+  <string name="pref_switch_title">SwitchPreference</string>
+  <string name="pref_switch_default">switch</string>
+</resources>

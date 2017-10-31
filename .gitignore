@@ -1,0 +1,15 @@
+.idea
+*.iml
+classes
+
+obj
+
+.DS_Store
+
+# Gradle
+.gradle
+jniLibs
+build
+local.properties
+reports
+TODO

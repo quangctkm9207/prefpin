@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion rootProject.compileSdkVersion
+
+  defaultConfig {
+    applicationId "prefpin.sample"
+    minSdkVersion rootProject.minSdkVersion
+    targetSdkVersion rootProject.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation project(":prefpin")
+  implementation "com.android.support:appcompat-v7:$rootProject.supportVersion"
+  testImplementation "junit:junit:$rootProject.junitVersion"
+}
