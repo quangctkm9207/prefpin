@@ -5,6 +5,12 @@
 * Remove `setOnPreferenceChangeListener` by using `@OnPrefChange`.
 
 ### Installation
+```gradle
+dependencies {
+    // ... other dependencies
+    implementation 'com.emo-pass:prefpin:0.1.0'
+}
+```
 
 ### Usage
 ```java

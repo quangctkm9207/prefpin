@@ -1,0 +1,33 @@
+/**
+ * Bintray configuration*/
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = POM_BINTRAY_NAME
+
+  publishedGroupId = 'com.emo-pass'
+  libraryName = 'PrefPin'
+  artifact = POM_ARTIFACT_ID
+  packagingType = POM_PACKAGING
+
+  libraryDescription = 'Preference binding for Android.'
+
+  siteUrl = 'https://github.com/quangctkm9207/prefpin'
+  gitUrl = 'https://github.com/quangnguyen/prefpin.git'
+
+  libraryVersion = rootProject.releaseVersion
+
+  developerId = 'quangctkm9207'
+  developerName = 'Quang Nguyen'
+  developerEmail = 'quangctkm9207@gmail.com'
+
+  licenseName = 'MIT License'
+  licenseUrl = 'https://opensource.org/licenses/MIT'
+  allLicenses = ["MIT"]
+
+}
+
+// Set up the Android Maven publication (POM etc.)
+apply from: rootProject.file('gradle/maven-install.gradle')
+
+// Upload to Bintray
+apply from: rootProject.file('gradle/bintray.gradle')
