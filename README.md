@@ -1,10 +1,10 @@
-## PrefPin
+# PrefPin :round_pushpin:
 **Reduce boilerplate codes in PreferenceFragment by using field and method binding.**
 * Remove `findFragment` by using `@BindPref`.
 * Remove `setOnPreferenceClickListener` by using `@OnPrefClick`.
 * Remove `setOnPreferenceChangeListener` by using `@OnPrefChange`.
 
-### Installation
+## Installation
 ```gradle
 dependencies {
     // ... others
@@ -12,10 +12,16 @@ dependencies {
 }
 ```
 
-### Usage
+## Usage
+Preference keys should be stored in `strings.xml`.
+```xml
+  <string name="pref_about_key" translatable="false">pref_about_key</string>
+```
+
+PreferenceFragment subclass will look like.
 ```java
 public class SettingFragment extends PreferenceFragment{
-  @BindPref(R.string.pref_general_key) Preference generalPreference;
+  @BindPref(R.string.pref_about_key) Preference aboutPreference;
   @BindPref(R.string.pref_name_key) EditTextPreference namePreference;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,7 @@ public class SettingFragment extends PreferenceFragment{
     //...
   }
   
-  @OnPrefClick(R.string.pref_name_key)
+  @OnPrefClick(R.string.pref_about_key)
   public void onClick(Preference preference) {
     //...
   }
@@ -37,5 +43,5 @@ public class SettingFragment extends PreferenceFragment{
 }
 ```
 
-### License
-This project is under MIT license.
+## License
+This project is under MIT license. Copyright (c) 2017 Quang Nguyen.
