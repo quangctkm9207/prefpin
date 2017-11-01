@@ -7,8 +7,8 @@
 ### Installation
 ```gradle
 dependencies {
-    // ... other dependencies
-    implementation 'com.emo-pass:prefpin:0.1.0'
+    // ... others
+    compile 'com.emo-pass:prefpin:0.1.0'
 }
 ```
 

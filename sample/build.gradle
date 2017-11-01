@@ -1,8 +1,5 @@
 apply plugin: 'com.android.application'
 
-repositories {
-  maven { url "https://dl.bintray.com/quangnguyen/maven" }
-}
 android {
   compileSdkVersion rootProject.compileSdkVersion
 
@@ -25,7 +22,6 @@ android {
 }
 
 dependencies {
-//  implementation project(":prefpin")
-  implementation "com.emo-pass:prefpin:$rootProject.releaseVersion"
+  implementation project(":prefpin")
   implementation "com.android.support:appcompat-v7:$rootProject.supportVersion"
 }
