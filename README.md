@@ -21,8 +21,8 @@ Preference keys should be stored in `strings.xml`.
 PreferenceFragment subclass will look like.
 ```java
 public class SettingFragment extends PreferenceFragment{
-  @BindPref(R.string.pref_about_key) Preference aboutPreference;
-  @BindPref(R.string.pref_name_key) EditTextPreference namePreference;
+  @BindPref(R.string.pref_about_key) public Preference aboutPreference;
+  @BindPref(R.string.pref_name_key) public EditTextPreference namePreference;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
