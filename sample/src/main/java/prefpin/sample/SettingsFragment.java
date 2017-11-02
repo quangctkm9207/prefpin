@@ -15,9 +15,12 @@ import prefpin.PrefPin;
 
 public class SettingsFragment extends PreferenceFragment {
 
-  @BindPref(R.string.pref_edit_key) public EditTextPreference editPreference;
-  @BindPref(R.string.pref_checkbox_key) public CheckBoxPreference checkBoxPreference;
-  @BindPref(R.string.pref_switch_key) public SwitchPreference switchPreference;
+  @BindPref(R.string.pref_edit_key)
+  EditTextPreference editPreference;
+  @BindPref(R.string.pref_checkbox_key)
+  CheckBoxPreference checkBoxPreference;
+  @BindPref(R.string.pref_switch_key)
+  SwitchPreference switchPreference;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -34,13 +37,13 @@ public class SettingsFragment extends PreferenceFragment {
     switchPreference.setChecked(true);
   }
 
-  @OnPrefClick(R.string.pref_about_key) public void showGeneral(Preference preference) {
+  @OnPrefClick(R.string.pref_about_key) private void showGeneral(Preference preference) {
     Intent intent = new Intent(getActivity(), AboutActivity.class);
     startActivity(intent);
   }
 
   @OnPrefChange(R.string.pref_edit_key)
-  public void onNameUpdate(Preference preference, Object newValue) {
+  private void onNameUpdate(Preference preference, Object newValue) {
     preference.setSummary(newValue.toString());
   }
 }

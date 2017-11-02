@@ -65,7 +65,7 @@ public class PrefPin {
    */
   private static void bindField(PreferenceFragment target) {
     Class targetClass = target.getClass();
-    Field[] fields = targetClass.getFields();
+    Field[] fields = targetClass.getDeclaredFields();
     for (Field field : fields) {
       Class<?> type = field.getType();
       if (type == Preference.class
@@ -82,6 +82,7 @@ public class PrefPin {
         int prefKey = getPreferenceKey(field);
         if (prefKey != -1) {
           try {
+            field.setAccessible(true);
             field.set(target, target.findPreference(target.getString(prefKey)));
           } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -98,7 +99,7 @@ public class PrefPin {
    */
   private static void bindMethod(PreferenceFragment target) {
     Class targetClass = target.getClass();
-    Method[] methods = targetClass.getMethods();
+    Method[] methods = targetClass.getDeclaredMethods();
     for (final Method method : methods) {
       Pair<Integer, Class<Annotation>> pair = getPreferenceKey(method);
       int prefKey = pair.first;
@@ -155,6 +156,7 @@ public class PrefPin {
     preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
       @Override public boolean onPreferenceClick(Preference preference) {
         try {
+          method.setAccessible(true);
           if (hasParameter) {
             method.invoke(target, preference);
           } else {
@@ -176,6 +178,7 @@ public class PrefPin {
     preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
       @Override public boolean onPreferenceChange(Preference preference, Object newValue) {
         try {
+          method.setAccessible(true);
           if (hasParameter) {
             method.invoke(target, preference, newValue);
           } else {
