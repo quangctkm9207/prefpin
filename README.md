@@ -8,7 +8,7 @@
 ```gradle
 dependencies {
     // ... others
-    compile 'com.emo-pass:prefpin:0.1.0'
+    compile 'com.emo-pass:prefpin:0.1.1'
 }
 ```
 
@@ -21,8 +21,8 @@ Preference keys should be stored in `strings.xml`.
 PreferenceFragment subclass will look like.
 ```java
 public class SettingFragment extends PreferenceFragment{
-  @BindPref(R.string.pref_about_key) public Preference aboutPreference;
-  @BindPref(R.string.pref_name_key) public EditTextPreference namePreference;
+  @BindPref(R.string.pref_about_key) private Preference aboutPreference;
+  @BindPref(R.string.pref_name_key) private EditTextPreference namePreference;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -32,12 +32,12 @@ public class SettingFragment extends PreferenceFragment{
   }
   
   @OnPrefClick(R.string.pref_about_key)
-  public void onClick(Preference preference) {
+  void onClick(Preference preference) {
     //...
   }
   
   @OnPrefChange(R.string.pref_name_key)
-  public void onPrefChange(Preference preference, Object newObject) {
+  void onPrefChange(Preference preference, Object newObject) {
     //...
   } 
 }
