@@ -1,6 +1,6 @@
 # PrefPin :round_pushpin:
 **Reduce boilerplate codes in PreferenceFragment by using field and method binding.**
-* Remove `findFragment` by using `@BindPref`.
+* Remove `findPreference` by using `@BindPref`.
 * Remove `setOnPreferenceClickListener` by using `@OnPrefClick`.
 * Remove `setOnPreferenceChangeListener` by using `@OnPrefChange`.
 
