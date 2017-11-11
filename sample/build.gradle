@@ -22,6 +22,6 @@ android {
 }
 
 dependencies {
-  implementation project(":prefpin")
+  implementation project(':prefpin')
   implementation "com.android.support:appcompat-v7:$rootProject.supportVersion"
 }
