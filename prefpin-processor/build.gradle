@@ -1,0 +1,9 @@
+apply plugin: 'java-library'
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+dependencies {
+  implementation project(":prefpin-annotation")
+  compile "com.squareup:javapoet:$rootProject.javapoetVersion"
+  compileOnly "com.google.auto.service:auto-service:$rootProject.autoserviceVersion"
+}
