@@ -24,4 +24,5 @@ android {
 dependencies {
   implementation project(':prefpin')
   implementation "com.android.support:appcompat-v7:$rootProject.supportVersion"
+  annotationProcessor project(':prefpin-processor')
 }
