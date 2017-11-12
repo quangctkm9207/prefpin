@@ -1,4 +1,8 @@
 # PrefPin :round_pushpin:
+
+**This branch is under development.**  
+`Annotation processing` is utilized to creating binding instead of `Java refection` technique in `master` branch. 
+
 **Reduce boilerplate codes in PreferenceFragment by using field and method binding.**
 * Remove `findPreference` by using `@BindPref`.
 * Remove `setOnPreferenceClickListener` by using `@OnPrefClick`.
