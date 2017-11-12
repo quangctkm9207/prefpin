@@ -9,18 +9,15 @@ import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
 import android.support.annotation.Nullable;
 import prefpin.BindPref;
+import prefpin.OnPrefChange;
+import prefpin.OnPrefClick;
 import prefpin.PrefPin;
 
 public class SettingsFragment extends PreferenceFragment {
 
-  @BindPref(R.string.pref_about_key)
-  Preference aboutPreference;
-  @BindPref(R.string.pref_edit_key)
-  EditTextPreference editPreference;
-  @BindPref(R.string.pref_checkbox_key)
-  CheckBoxPreference checkBoxPreference;
-  @BindPref(R.string.pref_switch_key)
-  SwitchPreference switchPreference;
+  @BindPref(R.string.pref_edit_key) EditTextPreference editPreference;
+  @BindPref(R.string.pref_checkbox_key) CheckBoxPreference checkBoxPreference;
+  @BindPref(R.string.pref_switch_key) SwitchPreference switchPreference;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -35,23 +32,14 @@ public class SettingsFragment extends PreferenceFragment {
         getPreferenceManager().getSharedPreferences().getString(editPreference.getKey(), ""));
     checkBoxPreference.setChecked(true);
     switchPreference.setChecked(true);
-
-    aboutPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-      @Override public boolean onPreferenceClick(Preference preference) {
-          Intent intent = new Intent(getActivity(), AboutActivity.class);
-          startActivity(intent);
-        return false;
-      }
-    });
   }
 
-  //@OnPrefClick(R.string.pref_about_key) private void showGeneral(Preference preference) {
-  //  Intent intent = new Intent(getActivity(), AboutActivity.class);
-  //  startActivity(intent);
-  //}
-  //
-  //@OnPrefChange(R.string.pref_edit_key)
-  //private void onNameUpdate(Preference preference, Object newValue) {
-  //  preference.setSummary(newValue.toString());
-  //}
+  @OnPrefClick(R.string.pref_about_key) void showGeneral(Preference preference) {
+    Intent intent = new Intent(getActivity(), AboutActivity.class);
+    startActivity(intent);
+  }
+
+  @OnPrefChange(R.string.pref_edit_key) void onNameUpdate(Preference preference, Object newValue) {
+    preference.setSummary(newValue.toString());
+  }
 }
