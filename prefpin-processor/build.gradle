@@ -7,3 +7,5 @@ dependencies {
   compile "com.squareup:javapoet:$rootProject.javapoetVersion"
   compileOnly "com.google.auto.service:auto-service:$rootProject.autoserviceVersion"
 }
+
+apply from: rootProject.file('release-bintray.gradle')

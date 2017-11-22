@@ -1,8 +1,4 @@
 # PrefPin :round_pushpin:
-
-**This branch is under development.**  
-`Annotation processing` is utilized to creating binding instead of `Java refection` technique in `master` branch. 
-
 **Reduce boilerplate codes in PreferenceFragment by using field and method binding.**
 * Remove `findPreference` by using `@BindPref`.
 * Remove `setOnPreferenceClickListener` by using `@OnPrefClick`.
@@ -12,7 +8,8 @@
 ```gradle
 dependencies {
     // ... others
-    compile 'com.emo-pass:prefpin:0.1.1'
+    compile 'com.emo-pass:prefpin:1.0.0-beta'
+    annotationProcessor 'com.emo-pass:prefpin-processor:1.0.0-beta'
 }
 ```
 
@@ -25,8 +22,8 @@ Preference keys should be stored in `strings.xml`.
 PreferenceFragment subclass will look like.
 ```java
 public class SettingFragment extends PreferenceFragment{
-  @BindPref(R.string.pref_about_key) private Preference aboutPreference;
-  @BindPref(R.string.pref_name_key) private EditTextPreference namePreference;
+  @BindPref(R.string.pref_about_key) Preference aboutPreference;
+  @BindPref(R.string.pref_name_key) EditTextPreference namePreference;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
