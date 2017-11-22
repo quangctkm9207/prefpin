@@ -70,6 +70,10 @@ public class PrefPinProcessor extends AbstractProcessor {
                 "Binding annotation can not applied to private fields or methods.", element);
       }
 
+      if (annotation == BindPref.class) {
+        checkPreferenceAnnotation(element);
+      }
+
       TypeElement targetPrefFragment = (TypeElement) element.getEnclosingElement();
       if (bindingMap.containsKey(targetPrefFragment)) {
         bindingMap.get(targetPrefFragment).add(element);
