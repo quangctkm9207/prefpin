@@ -1,4 +1,5 @@
 # PrefPin :round_pushpin:
+[ ![Download](https://api.bintray.com/packages/quangnguyen/maven/com.emo-pass%3Aprefpin/images/download.svg) ](https://bintray.com/quangnguyen/maven/com.emo-pass%3Aprefpin/_latestVersion)  
 **Reduce boilerplate codes in PreferenceFragment by using field and method binding.**
 * Remove `findPreference` by using `@BindPref`.
 * Remove `setOnPreferenceClickListener` by using `@OnPrefClick`.
