@@ -29,6 +29,12 @@ import prefpin.OnPrefClick;
 
 @AutoService(Processor.class)
 public class PrefPinProcessor extends AbstractProcessor {
+  private final ClassName PREFERENCE = ClassName.get("android.preference", "Preference");
+  private final ClassName CLICK_LISTENER =
+      ClassName.get("android.preference.Preference", "OnPreferenceClickListener");
+  private final ClassName CHANGE_LISTENER =
+      ClassName.get("android.preference.Preference", "OnPreferenceChangeListener");
+  private final ClassName UITHREAD = ClassName.get("android.support.annotation", "UiThread");
 
   @Override public Set<String> getSupportedAnnotationTypes() {
     Set<String> types = new LinkedHashSet<>();
@@ -114,11 +120,8 @@ public class PrefPinProcessor extends AbstractProcessor {
 
     ClassName targetClass = ClassName.get(packageName, targetSimpleClassName);
 
-    FieldSpec targetField = FieldSpec.builder(targetClass, "target", Modifier.PRIVATE).build();
-
     TypeSpec binding = TypeSpec.classBuilder(bindingSimpleClassName)
         .addModifiers(Modifier.PUBLIC)
-        .addField(targetField)
         .addMethod(buildConstructor(targetClass, annotationFields))
         .build();
 
@@ -129,9 +132,9 @@ public class PrefPinProcessor extends AbstractProcessor {
 
   private MethodSpec buildConstructor(ClassName targetClass, Set<Element> annotationFields) {
     MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder()
+        .addAnnotation(UITHREAD)
         .addModifiers(Modifier.PUBLIC)
-        .addParameter(targetClass, "target", Modifier.FINAL)
-        .addStatement("this.target = target");
+        .addParameter(targetClass, "target", Modifier.FINAL);
 
     for (Element element : annotationFields) {
       buildFieldBinding(constructorBuilder, element);
@@ -147,34 +150,25 @@ public class PrefPinProcessor extends AbstractProcessor {
     if (bindPref != null) {
       int resourceId = bindPref.value();
 
-      constructorBuilder.addStatement("target."
-          + element.getSimpleName()
-          + " = "
-          + "("
-          + element.asType().toString()
-          + ")"
-          + "target.findPreference(target.getString("
-          + resourceId
-          + "))");
+      constructorBuilder.addStatement(
+          "target.$L = ($T) target.findPreference(target.getString($L))", element.getSimpleName(),
+          element.asType(), resourceId);
     }
   }
 
   private void buildOnClickBinding(MethodSpec.Builder constructorBuilder, Element element) {
+
     OnPrefClick onPrefClick = element.getAnnotation(OnPrefClick.class);
     if (onPrefClick != null) {
       int resourceId = onPrefClick.value();
 
-      constructorBuilder.addStatement("target.findPreference(target.getString("
-          + resourceId
-          + "))"
-          + ".setOnPreferenceClickListener(new android.preference.Preference.OnPreferenceClickListener(){\n"
-          + "@Override public boolean onPreferenceClick(android.preference.Preference preference) {\n"
-          + "\t\ttarget."
-          + element.getSimpleName()
-          + "(preference);\n"
+      constructorBuilder.addStatement("target.findPreference(target.getString($L))"
+          + ".setOnPreferenceClickListener(new $T(){\n"
+          + "@Override public boolean onPreferenceClick($T preference) {\n"
+          + "\t\ttarget.$L(preference);\n"
           + "\t\treturn true;\n"
           + "\t}\n"
-          + "})");
+          + "})", resourceId, CLICK_LISTENER, PREFERENCE, element.getSimpleName());
     }
   }
 
@@ -183,17 +177,13 @@ public class PrefPinProcessor extends AbstractProcessor {
     if (onPrefChange != null) {
       int resourceId = onPrefChange.value();
 
-      constructorBuilder.addStatement("target.findPreference(target.getString("
-          + resourceId
-          + "))"
-          + ".setOnPreferenceChangeListener(new android.preference.Preference.OnPreferenceChangeListener() {\n"
-          + "@Override public boolean onPreferenceChange(android.preference.Preference preference, Object newValue) {\n"
-          + "\t\ttarget."
-          + element.getSimpleName()
-          + "(preference, newValue);\n"
+      constructorBuilder.addStatement("target.findPreference(target.getString($L))"
+          + ".setOnPreferenceChangeListener(new $T(){\n"
+          + "@Override public boolean onPreferenceChange($T preference, Object newValue) {\n"
+          + "\t\ttarget.$L(preference, newValue);\n"
           + "\t\treturn true;\n"
           + "\t}\n"
-          + "})");
+          + "})", resourceId, CHANGE_LISTENER, PREFERENCE, element.getSimpleName());
     }
   }
 
