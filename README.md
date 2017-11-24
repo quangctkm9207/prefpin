@@ -1,5 +1,6 @@
 # PrefPin :round_pushpin:
-[ ![Download](https://api.bintray.com/packages/quangnguyen/maven/com.emo-pass%3Aprefpin/images/download.svg) ](https://bintray.com/quangnguyen/maven/com.emo-pass%3Aprefpin/_latestVersion)  
+[ ![Download](https://api.bintray.com/packages/quangnguyen/maven/com.emo-pass%3Aprefpin/images/download.svg) ](https://bintray.com/quangnguyen/maven/com.emo-pass%3Aprefpin/_latestVersion)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PrefPin-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6419)  
 **Reduce boilerplate codes in PreferenceFragment by using field and method binding.**
 * Remove `findPreference` by using `@BindPref`.
 * Remove `setOnPreferenceClickListener` by using `@OnPrefClick`.
