@@ -1,5 +1,9 @@
 Change Log
 ===
+Version 1.0.0 *(2017-11-26)*
+---
+* Nothing special, just remove `-beta` in version name :))
+
 Version 1.0.0-beta *(2017-11-22)*
 ---
 * Use `annotation-processing` instead of `reflection` technique

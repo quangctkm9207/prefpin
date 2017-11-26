@@ -22,7 +22,7 @@ allprojects {
 
 ext {
   // Version
-  releaseVersion = '1.0.0-beta'
+  releaseVersion = '1.0.0'
 
   // SDK
   minSdkVersion = 14
