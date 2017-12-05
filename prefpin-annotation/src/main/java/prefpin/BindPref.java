@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  * {@literal @}BindView(R.string.pref_name_key) Preference namePreference;
  * </code></pre>
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface BindPref {
   /**
