@@ -11,7 +11,7 @@
 dependencies {
     // ... others
     compile 'com.emo-pass:prefpin:1.1.0'
-    annotationProcessor 'com.emo-pass:prefpin-processor:1.0.0'
+    annotationProcessor 'com.emo-pass:prefpin-processor:1.1.0'
 }
 ```
 
