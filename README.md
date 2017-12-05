@@ -10,7 +10,7 @@
 ```gradle
 dependencies {
     // ... others
-    compile 'com.emo-pass:prefpin:1.0.0'
+    compile 'com.emo-pass:prefpin:1.1.0'
     annotationProcessor 'com.emo-pass:prefpin-processor:1.0.0'
 }
 ```
@@ -39,7 +39,7 @@ public class SettingFragment extends PreferenceFragment{
     //...
   }
   
-  @OnPrefChange(R.string.pref_name_key)
+  @OnPrefChange({R.string.pref_name_key, R.string.pref_score_key})
   void onPrefChange(Preference preference, Object newObject) {
     //...
   } 

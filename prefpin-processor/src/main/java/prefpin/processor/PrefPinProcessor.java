@@ -160,30 +160,34 @@ public class PrefPinProcessor extends AbstractProcessor {
 
     OnPrefClick onPrefClick = element.getAnnotation(OnPrefClick.class);
     if (onPrefClick != null) {
-      int resourceId = onPrefClick.value();
+      int[] resourceIds = onPrefClick.value();
 
-      constructorBuilder.addStatement("target.findPreference(target.getString($L))"
-          + ".setOnPreferenceClickListener(new $T(){\n"
-          + "@Override public boolean onPreferenceClick($T preference) {\n"
-          + "\t\ttarget.$L(preference);\n"
-          + "\t\treturn true;\n"
-          + "\t}\n"
-          + "})", resourceId, CLICK_LISTENER, PREFERENCE, element.getSimpleName());
+      for (int resourceId : resourceIds) {
+        constructorBuilder.addStatement("target.findPreference(target.getString($L))"
+            + ".setOnPreferenceClickListener(new $T(){\n"
+            + "@Override public boolean onPreferenceClick($T preference) {\n"
+            + "\t\ttarget.$L(preference);\n"
+            + "\t\treturn true;\n"
+            + "\t}\n"
+            + "})", resourceId, CLICK_LISTENER, PREFERENCE, element.getSimpleName());
+      }
     }
   }
 
   private void buildOnChangeBinding(MethodSpec.Builder constructorBuilder, Element element) {
     OnPrefChange onPrefChange = element.getAnnotation(OnPrefChange.class);
     if (onPrefChange != null) {
-      int resourceId = onPrefChange.value();
+      int[] resourceIds = onPrefChange.value();
 
-      constructorBuilder.addStatement("target.findPreference(target.getString($L))"
-          + ".setOnPreferenceChangeListener(new $T(){\n"
-          + "@Override public boolean onPreferenceChange($T preference, Object newValue) {\n"
-          + "\t\ttarget.$L(preference, newValue);\n"
-          + "\t\treturn true;\n"
-          + "\t}\n"
-          + "})", resourceId, CHANGE_LISTENER, PREFERENCE, element.getSimpleName());
+      for (int resourceId : resourceIds) {
+        constructorBuilder.addStatement("target.findPreference(target.getString($L))"
+            + ".setOnPreferenceChangeListener(new $T(){\n"
+            + "@Override public boolean onPreferenceChange($T preference, Object newValue) {\n"
+            + "\t\ttarget.$L(preference, newValue);\n"
+            + "\t\treturn true;\n"
+            + "\t}\n"
+            + "})", resourceId, CHANGE_LISTENER, PREFERENCE, element.getSimpleName());
+      }
     }
   }
 

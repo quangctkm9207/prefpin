@@ -1,5 +1,9 @@
 Change Log
 ===
+Version 1.1.0 *(2017-12-05)*
+---
+* Allow to bind multiple preferences in OnPrefClick and OnPrefChange
+
 Version 1.0.0 *(2017-11-26)*
 ---
 * Nothing special, just remove `-beta` in version name :))

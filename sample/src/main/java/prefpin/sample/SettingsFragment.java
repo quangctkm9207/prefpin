@@ -39,7 +39,8 @@ public class SettingsFragment extends PreferenceFragment {
     startActivity(intent);
   }
 
-  @OnPrefChange(R.string.pref_edit_key) void onNameUpdate(Preference preference, Object newValue) {
+  @OnPrefChange({ R.string.pref_edit_key, R.string.pref_checkbox_key, R.string.pref_switch_key })
+  void onNameUpdate(Preference preference, Object newValue) {
     preference.setSummary(newValue.toString());
   }
 }

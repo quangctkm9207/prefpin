@@ -12,5 +12,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
 public @interface OnPrefChange {
-  @StringRes int value();
+  @StringRes int[] value();
 }
