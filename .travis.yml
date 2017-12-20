@@ -1,0 +1,31 @@
+language: android
+
+jdk:
+  - oraclejdk8
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-26.0.1
+    - android-26
+    - extra-android-m2repository
+    - extra-google-m2repository
+licenses:
+  - 'android-sdk-preview-license-.+'
+  - 'android-sdk-preview-license'
+  - 'android-sdk-license-.+'
+  - 'android-sdk-license'
+  - 'google-gdk-license-.+'
+
+notifications:
+  email: false
+
+sudo: false
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  directories:
+   - $HOME/.gradle
