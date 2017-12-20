@@ -1,5 +1,9 @@
 Change Log
 ===
+Version 1.1.1 *(2017-12-20)*
+---
+* Fix Gradle library plugin which causes NoClassDefFoundError for consumer app
+
 Version 1.1.0 *(2017-12-05)*
 ---
 * Allow to bind multiple preferences in OnPrefClick and OnPrefChange

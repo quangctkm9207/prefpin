@@ -10,8 +10,8 @@
 ```gradle
 dependencies {
     // ... others
-    compile 'com.emo-pass:prefpin:1.1.0'
-    annotationProcessor 'com.emo-pass:prefpin-processor:1.1.0'
+    implementation 'com.emo-pass:prefpin:1.1.1'
+    annotationProcessor 'com.emo-pass:prefpin-processor:1.1.1'
 }
 ```
 
