@@ -15,9 +15,8 @@ android {
 }
 
 dependencies {
-  compile project(':prefpin-annotation')
-  compile "com.android.support:support-annotations:$rootProject.supportVersion"
-  testCompile "junit:junit:$rootProject.junitVersion"
+  api project(':prefpin-annotation')
+  testImplementation "junit:junit:$rootProject.junitVersion"
 }
 
 apply from: rootProject.file('release-bintray.gradle')
