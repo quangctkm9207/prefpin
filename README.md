@@ -46,5 +46,12 @@ public class SettingFragment extends PreferenceFragment{
 }
 ```
 
+## ProGuard
+You need to add the following line if ProGuard is used in your app.
+```
+# Retain generated classes to look for by using reflection.
+-keep public class **.*_PrefBinding { *; }
+```
+
 ## License
 This project is under MIT license. Copyright (c) 2017 Quang Nguyen.
