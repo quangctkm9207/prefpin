@@ -30,6 +30,7 @@ import java.lang.reflect.InvocationTargetException;
  * </code></pre>
  */
 public class PrefPin {
+  private static final String BINDING_CLASS_NAME_POSTFIX = "_PrefBinding";
   private PrefPin() {
     throw new AssertionError("No instance.");
   }
@@ -55,9 +56,10 @@ public class PrefPin {
 
   private static Constructor findBindingConstructor(PreferenceFragment target) {
     String targetClassName = target.getClass().getName();
+    String bindingClassName = targetClassName + BINDING_CLASS_NAME_POSTFIX;
     Constructor constructor = null;
     try {
-      Class bindingClass = target.getClass().getClassLoader().loadClass(targetClassName + "_PrefBinding");
+      Class bindingClass = target.getClass().getClassLoader().loadClass(bindingClassName);
       constructor = bindingClass.getConstructor(target.getClass());
     } catch (ClassNotFoundException e) {
       e.printStackTrace();

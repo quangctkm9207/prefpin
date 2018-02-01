@@ -29,6 +29,8 @@ import prefpin.OnPrefClick;
 
 @AutoService(Processor.class)
 public class PrefPinProcessor extends AbstractProcessor {
+  public static final String BINDING_CLASS_NAME_POSTFIX = "_PrefBinding";
+
   private final ClassName PREFERENCE = ClassName.get("android.preference", "Preference");
   private final ClassName CLICK_LISTENER =
       ClassName.get("android.preference.Preference", "OnPreferenceClickListener");
@@ -115,7 +117,7 @@ public class PrefPinProcessor extends AbstractProcessor {
     }
 
     String targetSimpleClassName = targetClassName.substring(lastDot + 1);
-    String bindingClassName = targetClassName + "_PrefBinding";
+    String bindingClassName = targetClassName + BINDING_CLASS_NAME_POSTFIX;
     String bindingSimpleClassName = bindingClassName.substring(lastDot + 1);
 
     ClassName targetClass = ClassName.get(packageName, targetSimpleClassName);
